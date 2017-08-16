@@ -1,8 +1,8 @@
 import java.awt.*;
 import java.awt.event.*;
 public class Tank {
-	public static final int XSPEED = 5;
-	public static final int YSPEED = 5;
+	public static final int XSPEED = 8;
+	public static final int YSPEED = 8;
 	private int x,y;
 	private boolean bL = false, bU = false,bR = false, bD = false;
 	enum Direction {L, LU, U, RU, R, RD, D, LD, STOP};
