@@ -10,24 +10,26 @@ public class Tank {
 	TankClient tc;
 	
 	private int x,y;
+	private boolean good;
 	private boolean bL = false, bU = false,bR = false, bD = false;
 	enum Direction {L, LU, U, RU, R, RD, D, LD, STOP};
 	private Direction dir = Direction.STOP;
 	private Direction ptDir = Direction.D;
 	
-	public Tank(int x, int y) {
-
+	public Tank(int x, int y, boolean good) {
+		this.good = good;
 		this.x = x;
 		this.y = y;
 	}
-	public Tank(int x, int y, TankClient tc) {
-		this(x, y);
+	public Tank(int x, int y, boolean good, TankClient tc) {
+		this(x, y, good);
 		this.tc = tc;
 	}
 	
 	public void draw(Graphics g) {
 		Color c = g.getColor();
-		g.setColor(Color.red);
+		if(good) g.setColor(Color.red);
+		else g.setColor(Color.BLUE);
 		g.fillOval(x,y,WIDTH,HEIGHT);
 		g.setColor(c);
 		switch (ptDir) {
