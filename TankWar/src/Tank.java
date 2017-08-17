@@ -11,6 +11,13 @@ public class Tank {
 	
 	private int x,y;
 	private boolean good;
+	private boolean live = true;
+	public void setLive(boolean live) {
+		this.live = live;
+	}
+	public boolean isLive() {
+		return live;
+	}
 	private boolean bL = false, bU = false,bR = false, bD = false;
 	enum Direction {L, LU, U, RU, R, RD, D, LD, STOP};
 	private Direction dir = Direction.STOP;
@@ -27,6 +34,7 @@ public class Tank {
 	}
 	
 	public void draw(Graphics g) {
+		if(!live) return;
 		Color c = g.getColor();
 		if(good) g.setColor(Color.red);
 		else g.setColor(Color.BLUE);
@@ -160,6 +168,9 @@ public class Tank {
 		Missile m = new Missile(x, y, ptDir);
 		tc.missiles.add(m);
 		return m;
+	}
+	public Rectangle getRect() {
+		return new Rectangle(x, y, WIDTH, HEIGHT);
 	}
 }
 
