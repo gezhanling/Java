@@ -8,6 +8,7 @@ public class Missile {
 	
 	int x, y;
 	Tank.Direction dir;
+	private TankClient tc;
 	public boolean isLive() {
 		return live;
 	}
@@ -21,7 +22,10 @@ public class Missile {
 	}
 	
 	public void draw(Graphics g){
-		
+		if(!live) {
+			tc.missiles.remove(this);
+			return;
+		}
 		Color c = g.getColor();
 		g.setColor(Color.black);
 		g.fillOval(x, y, WIDTH, HEIGHT);

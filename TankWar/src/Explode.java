@@ -1,0 +1,29 @@
+import java.awt.*;
+public class Explode {
+	private TankClient tc;
+	
+	int x, y;
+	private boolean live = true;
+	int [] diamater = {4, 7, 12, 18, 26, 32, 49, 30, 14, 6};
+	int step = 0;
+	public Explode(int x, int y, TankClient tc) {
+		this.x = x;
+		this.y = y;
+		this.tc = tc;
+	}
+	public void draw(Graphics g) {
+		if(!live) return;
+	
+		if(step == diamater.length) {
+			live = false;
+			step = 0;
+			return;
+		}
+		Color c = g.getColor();
+		g.setColor(Color.ORANGE);
+		g.fillOval(x, y, diamater[step], diamater[step]);
+		g.setColor(c);
+		
+		step ++;
+	}
+}

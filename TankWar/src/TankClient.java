@@ -10,6 +10,8 @@ public class TankClient extends Frame {
 	Tank myTank = new Tank(50, 50, true, this);
 	Tank enemyTank = new Tank(100, 100, false, this);
 	
+	Explode e = new Explode(70,70,this);
+	
 	List<Missile> missiles = new ArrayList<Missile>();
 	
 	public void lauchFrame() {
@@ -36,6 +38,8 @@ public class TankClient extends Frame {
 			if(!m.isLive()) missiles.remove(m);
 			else m.draw(g);
 		}
+		e.draw(g);
+		
 		myTank.draw(g);	
 		enemyTank.draw(g);
 	}
@@ -49,7 +53,7 @@ public class TankClient extends Frame {
 			while(true) {
 				repaint();
 				try {
-					Thread.sleep(500);
+					Thread.sleep(300);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
