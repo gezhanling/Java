@@ -94,6 +94,10 @@ public class Tank {
 		if(this.dir != Direction.STOP) {
 			this.ptDir = this.dir;
 		}
+		if(x<0) x=0;
+		if(y<22) y=22;
+		if(y + Tank.HEIGHT>TankClient.GAME_HEIGHT) y=TankClient.GAME_HEIGHT-Tank.HEIGHT ;
+		if(x + Tank.WIDTH > TankClient.GAME_WIDTH ) x=TankClient.GAME_WIDTH - Tank.WIDTH ;
 	}
 	public void keyPressed(KeyEvent e) {
 		int key = e.getKeyCode();
